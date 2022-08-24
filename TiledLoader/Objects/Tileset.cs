@@ -27,6 +27,8 @@ public class Tileset
     public readonly WangSets? WangSets;
     public readonly Transformations? Transformations;
 
+    public readonly List<Tile> Tiles;
+
     public Tileset(XElement tileset)
     {
         FirstGId = Convert.ToUInt32(tileset.Attribute("firstgid")?.Value ?? "0");
@@ -50,5 +52,9 @@ public class Tileset
         TerrainTypes = tileset.Element("terraintypes") == null ? null : new TerrainTypes(tileset.Element("terraintypes")!);
         WangSets = tileset.Element("wangsets") == null ? null : new WangSets(tileset.Element("wangsets")!);
         Transformations = tileset.Element("transformations") == null ? null : new Transformations(tileset.Element("transformations")!);
+
+        Tiles = new List<Tile>();
+        foreach (var tile in tileset.Elements("tile"))
+            Tiles.Add(new Tile(tile));
     }
 }

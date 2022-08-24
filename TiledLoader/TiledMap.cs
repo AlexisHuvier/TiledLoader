@@ -31,6 +31,9 @@ public class TiledMap
     public readonly Properties? Properties;
     public readonly EditorSettings? EditorSettings; // SINCE 1.3
 
+    public readonly List<Tileset> Tilesets;
+    public readonly List<ObjectGroup> ObjectGroups;
+
     public TiledMap(string tmxfile)
     {
         File = tmxfile;
@@ -58,5 +61,12 @@ public class TiledMap
 
         Properties = file.Element("properties") == null ? null : new Properties(file.Element("properties")!);
         EditorSettings = file.Element("editorsettings") == null ? null : new EditorSettings(file.Element("editorsettings")!);
+
+        Tilesets = new List<Tileset>();
+        foreach(var tileset in file.Elements("tileset"))
+            Tilesets.Add(new Tileset(tileset));
+        ObjectGroups = new List<ObjectGroup>();
+        foreach(var objectgroup in file.Elements("objectgroup"))
+            ObjectGroups.Add(new ObjectGroup(objectgroup));
     }
 }
