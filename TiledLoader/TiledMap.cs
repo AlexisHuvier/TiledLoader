@@ -1,4 +1,5 @@
 ﻿using System.Xml.Linq;
+using TiledLoader.Objects;
 using TiledLoader.Utils;
 
 namespace TiledLoader;
@@ -27,6 +28,9 @@ public class TiledMap
     public readonly uint NextObjectId; // SINCE 0.11
     public readonly bool Infinite;
 
+    public readonly Properties? Properties;
+    public readonly EditorSettings? EditorSettings; // SINCE 1.3
+
     public TiledMap(string tmxfile)
     {
         File = tmxfile;
@@ -51,5 +55,8 @@ public class TiledMap
         NextLayerId = Convert.ToUInt32(file.Attribute("nextlayerid")?.Value ?? "0");
         NextObjectId = Convert.ToUInt32(file.Attribute("nextobjectid")?.Value ?? "0");
         Infinite = file.Attribute("infinite")?.Value == "1";
+
+        Properties = file.Element("properties") == null ? null : new Properties(file.Element("properties")!);
+        EditorSettings = file.Element("editorsettings") == null ? null : new EditorSettings(file.Element("editorsettings")!);
     }
 }

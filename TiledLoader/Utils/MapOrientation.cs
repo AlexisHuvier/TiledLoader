@@ -9,10 +9,10 @@ public class MapOrientation
     
     public string Value { get; }
     
-    public static MapOrientation Orthogonal => new("orthogonal");
-    public static MapOrientation Isometric => new("isometric");
-    public static MapOrientation Staggered => new("staggered");
-    public static MapOrientation Hexagonal => new("hexagonal");
+    public static readonly MapOrientation Orthogonal = new("orthogonal");
+    public static readonly MapOrientation Isometric = new("isometric");
+    public static readonly MapOrientation Staggered = new("staggered");
+    public static readonly MapOrientation Hexagonal = new("hexagonal");
 
     public static MapOrientation FromString(string type)
     {

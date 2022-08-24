@@ -9,10 +9,10 @@ public class RenderOrder
     
     public string Value { get; }
     
-    public static RenderOrder RightDown => new("right-down");
-    public static RenderOrder RightUp => new("right-up");
-    public static RenderOrder LeftDown => new("left-down");
-    public static RenderOrder LeftUp => new("left-up");
+    public static readonly RenderOrder RightDown = new("right-down");
+    public static readonly RenderOrder RightUp = new("right-up");
+    public static readonly RenderOrder LeftDown = new("left-down");
+    public static readonly RenderOrder LeftUp = new("left-up");
 
     public static RenderOrder FromString(string type)
     {

@@ -9,8 +9,8 @@ public class StaggerAxis
     
     public string Value { get; }
     
-    public static StaggerAxis X => new("x");
-    public static StaggerAxis Y => new("y");
+    public static readonly StaggerAxis X = new("x");
+    public static readonly StaggerAxis Y = new("y");
     
     public static StaggerAxis FromString(string type)
     {

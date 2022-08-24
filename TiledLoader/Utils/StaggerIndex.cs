@@ -9,8 +9,8 @@ public class StaggerIndex
     
     public string Value { get; }
     
-    public static StaggerIndex Odd => new("odd");
-    public static StaggerIndex Even => new("even");
+    public static readonly StaggerIndex Odd = new("odd");
+    public static readonly StaggerIndex Even = new("even");
     
     public static StaggerIndex FromString(string type)
     {
