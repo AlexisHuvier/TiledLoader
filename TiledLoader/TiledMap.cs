@@ -32,7 +32,10 @@ public class TiledMap
     public readonly EditorSettings? EditorSettings; // SINCE 1.3
 
     public readonly List<Tileset> Tilesets;
+    public readonly List<Layer> Layers;
     public readonly List<ObjectGroup> ObjectGroups;
+    public readonly List<ImageLayer> ImageLayers;
+    public readonly List<Group> Groups;
 
     public TiledMap(string tmxfile)
     {
@@ -65,8 +68,17 @@ public class TiledMap
         Tilesets = new List<Tileset>();
         foreach(var tileset in file.Elements("tileset"))
             Tilesets.Add(new Tileset(tileset));
+        Layers = new List<Layer>();
+        foreach(var layer in file.Elements("layer"))
+            Layers.Add(new Layer(layer));
         ObjectGroups = new List<ObjectGroup>();
         foreach(var objectgroup in file.Elements("objectgroup"))
             ObjectGroups.Add(new ObjectGroup(objectgroup));
+        ImageLayers = new List<ImageLayer>();
+        foreach(var imageLayer in file.Elements("imagelayer"))
+            ImageLayers.Add(new ImageLayer(imageLayer));
+        Groups = new List<Group>();
+        foreach(var groupE in file.Elements("group"))
+            Groups.Add(new Group(groupE));
     }
 }
